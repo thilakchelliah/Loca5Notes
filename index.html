@@ -2,41 +2,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Untitled Page</title>
+    <script src="Script/jquery-1.11.2.js" type="text/javascript"></script>
+    <script src="Script/jquery.gridly.js" type="text/javascript"></script>
+    <script type="text/javascript" src="Script/html5NotesEngine.js"></script>
+    <link href="css/jquery.gridly.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-        #notes li
+        .gridly
         {
             position: relative;
-            width: 100px;
-            min-height: 100px;
-            padding: 15px;
-            margin:10px;
-            -webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
-            -moz-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
-            box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75);
-            float: left;
-            width: 200px;
-            list-style:none;
+            width: 960px;
         }
-        #noteTitlePlus
+        .brick.small
         {
-            font-size:150px;
+            width: 140px;
+            height: 140px;
+        }
+        .brick.large
+        {
+            width: 300px;
+            height: 300px;
+        }
+        .noteTitle
+        {
+            word-wrap: break-word;
+            font-size:11px;
+            color:White;
+            font-family:Calibri Light;
+        }
+        .noteContent
+        {
+            word-wrap: break-word;
+            font-size:15px;
+            color:White;
+            font-family:Calibri;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.gridly').gridly({
+                base: 60, // px 
+                gutter: 20, // px
+                columns: 12
+            });
+        });
+    </script>
 </head>
-<body>
-    <ul id="notes">
-        <li>
-        <span class="noteTitle">HI</span>
-           
-        </li>
-        <li>
-         <span class="noteTitle">HI2</span>
-         
-        </li>
-         <li>
-         <span id="noteTitlePlus">+</span>
-         
-        </li>
-    </ul>
+<body onload=" checkForIndexedDB()">
+    <div id="notesUnorderedList" class="gridly">
+    </div>
+    <div class="notesList" id="addNoteList">
+        <span>+</span></div>
 </body>
 </html>
