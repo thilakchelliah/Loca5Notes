@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f3">
+  <meta name="description" content="Back up your Loca5 Notes or move them to another device.">
+  <title>Import &amp; export — Loca5 Notes</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="transfer.css">
+  <script src="transfer.js" type="module"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Notes navigation">
+      <a class="brand" href="index.html" aria-label="Loca5 Notes home">
+        <span class="brand-mark" aria-hidden="true">l.</span>
+        <span class="brand-name">loca<span>5</span>notes</span>
+      </a>
+
+      <p class="nav-caption transfer-nav-caption">WORKSPACE</p>
+      <nav class="primary-nav transfer-nav" aria-label="Workspace">
+        <a class="nav-item" href="index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>
+          <span>All notes</span>
+        </a>
+        <a class="nav-item is-active" href="transfer.html" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
+          <span>Import &amp; export</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="storage-indicator"><span class="status-dot"></span><span>Your notes stay on this device</span></div>
+        <p class="sidebar-note">A little space for your thoughts.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-separator">/</span><strong>Import &amp; export</strong></div>
+        <div class="topbar-actions">
+          <a class="transfer-back" href="index.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6M9 12h11"/></svg>
+            <span>Back to notes</span>
+          </a>
+        </div>
+      </header>
+
+      <section class="transfer-area" aria-labelledby="transferTitle">
+        <p class="eyebrow">YOUR NOTES, YOURS TO TAKE</p>
+        <h1 id="transferTitle">Import &amp; export<span class="heading-period">.</span></h1>
+        <p class="transfer-lede">Move your notes between devices with a backup file. Your notes and attached images are included.</p>
+
+        <div class="transfer-notice" id="transferNotice" role="status" aria-live="polite" hidden></div>
+        <div class="transfer-summary" id="transferSummary">
+          <span class="summary-dot"></span>
+          <span id="noteSummary">Loading your notes…</span>
+        </div>
+
+        <div class="transfer-grid">
+          <article class="transfer-card export-card">
+            <div class="transfer-card-icon export-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
+            </div>
+            <p class="eyebrow">BACK UP YOUR NOTES</p>
+            <h2>Take them with you.</h2>
+            <p class="card-description">Download one backup with all your notes, labels, colors, pinned status, and compressed images.</p>
+            <button class="transfer-primary" id="exportButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg>
+              Download backup
+            </button>
+            <p class="card-footnote">JSON file · Keep it somewhere safe</p>
+          </article>
+
+          <article class="transfer-card import-card">
+            <div class="transfer-card-icon import-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 15V3m-5 5 5-5 5 5M5 17v4h14v-4"/></svg>
+            </div>
+            <p class="eyebrow">RESTORE OR MOVE DEVICES</p>
+            <h2>Bring them back.</h2>
+            <p class="card-description">Choose a Loca5 Notes backup from another device. You can merge it with these notes or replace them.</p>
+            <button class="transfer-secondary file-picker" id="chooseBackupButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-5 5 5-5 5 5M5 17v4h14v-4"/></svg>
+              Choose a backup file
+            </button>
+            <input id="backupFile" type="file" accept=".json,application/json" hidden>
+            <div class="import-preview" id="importPreview" hidden>
+              <strong id="importFileName"></strong>
+              <span id="importDetails"></span>
+              <fieldset class="import-mode">
+                <legend>How should these notes be added?</legend>
+                <label><input type="radio" name="importMode" value="merge" checked> Merge with my notes</label>
+                <label><input type="radio" name="importMode" value="replace"> Replace all my notes</label>
+              </fieldset>
+              <button class="transfer-primary" id="importButton" type="button">Import notes</button>
+            </div>
+            <p class="card-footnote">Your backup stays on your device.</p>
+          </article>
+        </div>
+
+        <aside class="transfer-tip">
+          <span class="tip-mark" aria-hidden="true">i</span>
+          <p><strong>Using cloud storage?</strong> Download a backup, then upload the file to your own OneDrive, Google Drive, or Dropbox. On your other device, download the file and import it here. This app does not connect to your cloud account.</p>
+        </aside>
+        <p class="privacy-note">Backups are created in your browser. Notes are not sent to Loca5 Notes or any cloud service.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
